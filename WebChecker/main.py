@@ -1,5 +1,5 @@
 import sys
-import configparser
+import read_config
 import pickle
 import glob
 import os
@@ -15,16 +15,12 @@ except ModuleNotFoundError:
     from lib.pylinkvalidator.api import crawl_with_options
 
 if __name__ == '__main__':
-    config = configparser.ConfigParser()
-
-    current_dir = os.getcwd().replace('\WebChecker', '') + '\WebChecker'    
-    config.read(current_dir + '\config.ini')
+    # configs
+    url, out_dir, log_dir = read_config.read_default()
     
-    url = config['DEFAULT']['URL']
-    out_dir = current_dir + config['DEFAULT']['OUT_DIR']
+    # check wether the dir is exist, if not create it
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
-    log_dir = current_dir + config['DEFAULT']['LOG_DIR']
     if not os.path.exists(log_dir):
         os.makedirs(log_dir)
 
