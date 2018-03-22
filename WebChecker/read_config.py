@@ -13,13 +13,20 @@ def read_default():
     return url, out_dir, log_dir
 
 if __name__ == '__main__':
-    commit = config['FLAG']['RUN_ON_COMMIT']
-    push = config['FLAG']['SKIP_ON_PUSH']
-
     if len(sys.argv) > 1:
         if sys.argv[1] == 'commit':
+            commit = config['FLAG']['RUN_ON_COMMIT']
             sys.exit(commit)
-        else:
+        elif sys.argv[1] == 'push':
+            push = config['FLAG']['SKIP_ON_PUSH']
             sys.exit(push)
+        elif sys.argv[1] == 'production':
+            push = config['ENV']['PRODUCTION']
+            sys.exit(push)
+        elif sys.argv[1] == 'uat':
+            push = config['ENV']['UAT']
+            sys.exit(push)
+        else:
+            sys.exit("1")
     else:
-        sys.exit(commit)
+        sys.exit("1")
