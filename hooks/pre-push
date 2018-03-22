@@ -1,0 +1,44 @@
+#!/usr/bin/env bash
+
+production_branch="master"
+uat_branch="develop"
+current_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+# check pushed match, ignore if not  master and not develop
+if [[ "$current_branch" != "$production_branch" && "$current_branch" != "$uat_branch" ]]; then   
+    exit 0
+fi
+
+message_flag="[AUTO-CHECK-SKIP]"
+last_commit_message=$(git log -1 --pretty=%B 2>&1)
+
+# check regex match
+if [[ "$last_commit_message" =~ "$message_flag" ]]; then   
+    echo "$message_flag found, skipping automated link check"
+	exit 0
+fi
+
+# Check python3 existance
+if command -v python3 &>/dev/null; then
+    echo 'Python 3 is installed, Continuing..'	
+else
+    echo 'Python 3 is not installed'
+	echo 'Please install python3 and add to path'	
+	exit 0
+fi
+
+# PATHs
+python_script=$PWD/WebChecker/main.py
+
+# Check python script is not exist
+if [ ! -f $python_script ]; then
+	echo "Automated link check cannot run"
+    echo $python_script "not found!"
+	exit 0
+else
+    echo "Running Automated Link Check......"	
+fi
+
+# run web checker
+# exit message handle by the python script
+python3 $python_script
