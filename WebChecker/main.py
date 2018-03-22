@@ -22,7 +22,11 @@ if __name__ == '__main__':
     
     url = config['DEFAULT']['URL']
     out_dir = current_dir + config['DEFAULT']['OUT_DIR']
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
     log_dir = current_dir + config['DEFAULT']['LOG_DIR']
+    if not os.path.exists(log_dir):
+        os.makedirs(log_dir)
 
     format_unknown = lambda val, is_status: val if (val if is_status else val.status) is not None else 1
     
