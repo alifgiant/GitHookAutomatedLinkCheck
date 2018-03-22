@@ -2,8 +2,8 @@
 Automated recursive link checker triggered by git hooks. Written in Python3.
 
 This tools will automatically:
-1. __run on push__ to production (branch master) or uat (branch develop) environtment except you include flag __[AUTO-CHECK]__ on your last commit to push and,
-2. __run on commit__ if you put flag __[AUTO-CHECK-SKIP]__ on your commit message and
+1. __run on push__ to production (branch master) or uat (branch develop) environtment except you include flag __[AUTO-CHECK-SKIP]__ on your last commit to push, and
+2. __run on commit__ if you put flag __[AUTO-CHECK]__ on your commit message and
 
 ## Requirements
 This tools require
