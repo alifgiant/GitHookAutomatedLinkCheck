@@ -1,15 +1,5 @@
 #!/usr/bin/env bash
 
-commit_message=$(<$1)
-message_flag="[AUTO-CHECK]"
-
-# check regex match
-if ! [[ "$commit_message" =~ "$message_flag" ]]; then   
-    exit 0
-else 
-    echo "$message_flag found, trying to run automated link check"
-fi
-
 # Check python3 existance
 if command -v python3 &>/dev/null; then
     echo 'Python 3 is installed, Continuing..'	
@@ -17,6 +7,16 @@ else
     echo 'Python 3 is not installed'
 	echo 'Please install python3 and add to path'
 	exit 0
+fi
+
+commit_message=$(<$1)
+message_flag=$(python3 $python_config_reader commit 2>&1)
+
+# check regex match
+if ! [[ "$commit_message" =~ "$message_flag" ]]; then   
+    exit 0
+else 
+    echo "$message_flag found, trying to run automated link check"
 fi
 
 # PATHs

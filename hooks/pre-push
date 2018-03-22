@@ -1,5 +1,14 @@
 #!/usr/bin/env bash
 
+# Check python3 existance
+if command -v python3 &>/dev/null; then
+    echo 'Python 3 is installed, Continuing..'	
+else
+    echo 'Python 3 is not installed'
+	echo 'Please install python3 and add to path'	
+	exit 0
+fi
+
 production_branch="master"
 uat_branch="develop"
 current_branch="$(git rev-parse --abbrev-ref HEAD)"
@@ -9,21 +18,12 @@ if [[ "$current_branch" != "$production_branch" && "$current_branch" != "$uat_br
     exit 0
 fi
 
-message_flag="[AUTO-CHECK-SKIP]"
 last_commit_message=$(git log -1 --pretty=%B 2>&1)
+message_flag=$(python3 $python_config_reader push 2>&1)
 
 # check regex match
 if [[ "$last_commit_message" =~ "$message_flag" ]]; then   
     echo "$message_flag found, skipping automated link check"
-	exit 0
-fi
-
-# Check python3 existance
-if command -v python3 &>/dev/null; then
-    echo 'Python 3 is installed, Continuing..'	
-else
-    echo 'Python 3 is not installed'
-	echo 'Please install python3 and add to path'	
 	exit 0
 fi
 
