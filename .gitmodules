@@ -1,0 +1,3 @@
+[submodule "WebChecker/lib/pylinkvalidator"]
+	path = WebChecker/lib/pylinkvalidator
+	url = https://github.com/helloproclub/pylinkvalidator.git
