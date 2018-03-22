@@ -99,3 +99,7 @@ ENV/
 
 # mypy
 .mypy_cache/
+
+# Local Output file
+WebChecker/logs/
+WebChecker/out/
