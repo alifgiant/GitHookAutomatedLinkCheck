@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# production_branch="master"
+# uat_branch="develop"
+# current_branch="$(git rev-parse --abbrev-ref HEAD)"
+
+commit_message=$(<$1)
+message_flag="[AUTO-CHECK]"
+
+# check regex match
+if ! [[ "$commit_message" =~ "$message_flag" ]]; then   
+    exit 0
+else 
+    echo "[AUTO-CHECK] found, trying to run automated link check"
+fi
+
+# PATHs
+python_script=$PWD/WebChecker/main.py
+
+# Check python script is not exist
+if [ ! -f $python_script ]; then
+	echo "Automated link check cannot run"
+    echo $python_script "not found!"
+	exit 0
+else
+    echo "Running Automated Link Check......"	
+fi
+
+# run web checker
+# exit message handle by the python script
+python3 $python_script
