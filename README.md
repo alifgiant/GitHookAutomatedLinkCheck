@@ -3,21 +3,12 @@ Automated recursive link checker triggered by git hooks. Written in Python3.
 
 This tools will automatically:
 1. __run on push__ to production (branch master) or uat (branch develop) environtment except you include flag __[AUTO-CHECK-SKIP]__ on your last commit to push, and
-2. __run on commit__ if you put flag __[AUTO-CHECK]__ on your commit message and
+2. __run on commit__ if you put flag __[AUTO-CHECK]__ on your commit message.
 
 ## Requirements
 This tools require
 1. Bash
 2. Python3 >= 3.6.3
-	> To verify, open up your terminal and execute __python3__. If it fails, make sure python3 is added to your environtment path
-	
-	> For __windows__ user, sometimes python3 installation not showed up as __python3.exe__, all you need to do is:
-	
-	``` 
-	1. Go to your installation directory
-	2. Copy and paste python.exe
-	3. rename the copied file as python3.exe
-	```
 
 ## Quick Start
 ### Setup
@@ -43,6 +34,17 @@ Open up your terminal and execute main.py
 ```bash
 ~\WebChecker> python3 main.py
 ```
+
+## Troubleshooting
+1. Already install and add to path but git hook result still saying python3 is not installed? 
+	1. Please make sure you already add python3 to your environtment path
+	2. Try to restart your bash
+	3. To verify, open up your terminal and execute __python3__ --version.
+2. For __windows__ user, sometimes python3 installation not showed up as __python3.exe__, all you need to do is:	
+	1. Go to your installation directory
+	2. Copy and paste python.exe
+	3. rename the copied file as python3.exe
+
 
 ## Third party depedencies
 You don't need to install these dependency manually, they are either already included or will be installed on first run.
