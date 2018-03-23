@@ -8,7 +8,16 @@ This tools will automatically:
 ## Requirements
 This tools require
 1. Bash
-2. Python3 >= 3.6.3, make sure python is added to your environtment path
+2. Python3 >= 3.6.3
+	> To verify, open up your terminal and execute __python3__. If it fails, make sure python3 is added to your environtment path
+	
+	> For __windows__ user, sometimes python3 installation not showed up as __python3.exe__, all you need to do is:
+	
+	``` 
+	1. Go to your installation directory
+	2. Copy and paste python.exe
+	3. rename the copied file as python3.exe
+	```
 
 ## Quick Start
 ### Setup
