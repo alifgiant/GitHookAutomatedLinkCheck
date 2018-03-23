@@ -8,7 +8,7 @@ This tools will automatically:
 ## Requirements
 This tools require
 1. Bash
-2. Python3 >= 3.6.3
+2. Python3 >= 3.6.3, make sure python is added to your environtment path
 
 ## Quick Start
 ### Setup
