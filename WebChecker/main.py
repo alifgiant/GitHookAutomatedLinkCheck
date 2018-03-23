@@ -27,12 +27,12 @@ if __name__ == '__main__':
     format_unknown = lambda val, is_status: val if (val if is_status else val.status) is not None else 1
     
     # new crawled data
-    crawled_site = crawl_with_options([url], {"workers": 5, 'ignore-bad-tel-urls': True})
+    crawled_site = crawl_with_options([url], {"workers": 5, 'progress': True, 'ignore-bad-tel-urls': True})
     error_pages = crawled_site.error_pages
     new_counted_errors = Counter({str(format_unknown(val,False)) : format_unknown(val.status, True) for _, val in error_pages.items()})    
     
     git_error_status = 0 # no error
-    out_results = glob.glob(out_dir+'\\*.pkl') # *.pkl means all .pkl files of old result    
+    out_results = glob.glob(out_dir+'\*.pkl') # *.pkl means all .pkl files of old result    
     if len(out_results) > 0: # if any before result
         latest_file_addr = max(out_results, key=os.path.getctime)
         with open(latest_file_addr, "rb" ) as latest_file_object:
