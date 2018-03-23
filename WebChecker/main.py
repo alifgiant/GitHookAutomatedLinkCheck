@@ -61,7 +61,7 @@ if __name__ == '__main__':
         print(title, file=file_log)
         for resource, status in new_counted_errors.items():
             source = str(resource).replace("\n", "").replace("Resource ", "")
-            data = '{:s},{:s}'.format(source, str(status) if status != 1 else 'Unknown')
+            data = '{:s},{:s}'.format(source if status != '1' else 'Unknown', str(status) if status != 1 else 'Unknown')
             print(data, file=file_log)
     
     # git error status

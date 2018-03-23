@@ -28,8 +28,17 @@ Edit file __/WebChecker/config.ini__ to match your configuration need
 - __PRODUCTION__ -> branch name for production environtment
 - __UAT__ -> branch name for uat environment
 
+
+### Non hook start
+Open up your terminal and execute main.py
+```bash
+~\WebChecker> python3 main.py
+```
+
 ## Third party depedencies
 You don't need to install these dependency manually, they are either already included or will be installed on first run.
 1. PyLinkValidator, This tools is using python library from [here](https://github.com/helloproclub/pylinkvalidator) which forked from [here](https://github.com/bartdag/pylinkvalidator). This tools didn't use the library from pypi since it's not up to date yet.
 2. beautifulsoup4 4.6.0, python package
-	> python3 -m pip install beautifulsoup4
+	```bash
+	python3 -m pip install beautifulsoup4
+	```
